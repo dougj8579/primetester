@@ -1,0 +1,14 @@
+--- a/include/router.h
++++ b/include/router.h
+@@ -53,6 +53,10 @@ public:
+         return name_;
+     }
+
++    std::string value() const {
++        return value_;
++    }
++
+ private:
+     std::string name_;
+     std::string value_;
+
