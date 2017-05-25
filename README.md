@@ -7,26 +7,34 @@ Currently handles unsigned integers up to 2^64-1
 
 DEPENDENCIES:
 
-Pistache - a modern HTTP and REST framework written in pure-C++11 http://pistache.io/
+Pistache - a modern HTTP and REST framework written in pure-C++11 http://pistache.io/  **requires patch
 rapidjson-dev - http://us.archive.ubuntu.com/ubuntu vivid main universe
 cmake
 
 
 SETUP:
 
-~/cp $ git clone https://github.com/oktal/pistache.git
-~/cp $ cd pistache
-~/cp/pistache $ git submodule update --init
-~/cp/pistache $ mkdir build && cd build
-~/cp/pistache/build $ cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release ..
-~/cp/pistache/build $ make
-~/cp/pistache/build $ sudo make install
-~/cp/pistache/build $ sudo ldconfig
-~/cp/pistache/build $ cd ../..
+1) Clone repos and apply patch to pistache.
 
-~/cp $ git clone https://github.com/dougj8579/primetester.git
-~/cp $ cd primetester/
-~/cp/primetester $ make
+git clone https://github.com/dougj8579/primetester.git
+git clone https://github.com/oktal/pistache.git
+cd pistache
+git apply ../primetester/pistache.patch
+
+2) Compile and install pistache.
+
+git submodule update --init
+mkdir build && cd build
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release ..
+make
+sudo make install
+sudo ldconfig
+cd ../..
+
+3) Compile primetest
+
+cd primetester/
+make
 
 
 LAUNCH & TEST:
@@ -37,15 +45,9 @@ LAUNCH & TEST:
 
 EXAMPLE:
 
-$ curl -X POST http://localhost:9080/isprime/4294967357
+1) from a local terminal do:
 
-Generates a response string "true" indicating 4294967357 is prime.
+curl -X POST http://localhost:9080/isprime/4294967357
 
-
-
-
-
-
-
-
+2) Generates a response string "true" indicating 4294967357 is prime.
 
