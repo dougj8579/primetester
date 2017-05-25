@@ -14,40 +14,40 @@ cmake
 
 SETUP:
 
-1) Clone repos and apply patch to pistache.
+1. Clone repos and apply patch to pistache.
 
-git clone https://github.com/dougj8579/primetester.git
-git clone https://github.com/oktal/pistache.git
-cd pistache
-git apply ../primetester/pistache.patch
+git clone https://github.com/dougj8579/primetester.git  
+git clone https://github.com/oktal/pistache.git  
+cd pistache  
+git apply ../primetester/pistache.patch  
 
-2) Compile and install pistache.
+2. Compile and install pistache.
 
-git submodule update --init
-mkdir build && cd build
-cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release ..
-make
-sudo make install
-sudo ldconfig
-cd ../..
+git submodule update --init  
+mkdir build && cd build  
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release ..  
+make  
+sudo make install  
+sudo ldconfig  
+cd ../..  
 
-3) Compile primetest
+3. Compile primetest
 
-cd primetester/
-make
+cd primetester/  
+make  
 
 
 LAUNCH & TEST:
 
-~/cp/primetester $ ./primetest &
-~/cp/primetester $ ./test.sh testcases
+~/cp/primetester $ ./primetest &  
+~/cp/primetester $ ./test.sh testcases  
 
 
 EXAMPLE:
 
-1) from a local terminal do:
+1. from a local terminal do:
 
 curl -X POST http://localhost:9080/isprime/4294967357
 
-2) Generates a response string "true" indicating 4294967357 is prime.
+2. Generates a response string "true" indicating 4294967357 is prime.
 
